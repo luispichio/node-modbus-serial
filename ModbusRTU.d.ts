@@ -31,6 +31,8 @@ export class ModbusRTU {
   connectUDP(ip: string, options: UdpPortOptions): Promise<void>;
   connectTcpRTUBuffered(ip: string, options: TcpRTUPortOptions, next: Function): void;
   connectTcpRTUBuffered(ip: string, options: TcpRTUPortOptions): Promise<void>;
+  connectRTUOverTCPBuffered(ip: string, options: TcpRTUPortOptions, next: Function): void;
+  connectRTUOverTCPBuffered(ip: string, options: TcpRTUPortOptions): Promise<void>;
   connectTelnet(ip: string, options: TelnetPortOptions, next: Function): void;
   connectTelnet(ip: string, options: TelnetPortOptions): Promise<void>;
   connectC701(ip: string, options: C701PortOptions, next: Function): void;

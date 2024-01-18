@@ -207,6 +207,35 @@ const addConnctionAPI = function(Modbus) {
     };
 
     /**
+     * Connect to a communication port, using RTUOverTCPBufferedPort.
+     *
+     * @param {string} ip the ip of the TCP Port - required.
+     * @param {Object} options - the serial tcp port options - optional.
+     * @param {Function} next the function to call next.
+     */
+    cl.connectRTUOverTCPBuffered = function(ip, options, next) {
+        // check if we have options
+        if (typeof next === "undefined" && typeof options === "function") {
+            next = options;
+            options = {};
+        }
+
+        // check if we have options
+        if (typeof options === "undefined") {
+            options = {};
+        }
+
+        const RTUOverTCPBufferedPort = require("../ports/rtuovertcpbufferedport");
+        if (this._timeout) {
+            options.timeout = this._timeout;
+        }
+        this._port = new RTUOverTCPBufferedPort(ip, options);
+
+        // open and call next
+        return open(this, next);
+    };
+
+    /**
      * Connect to a communication port, using TelnetPort.
      *
      * @param {string} ip the ip of the TelnetPort - required.

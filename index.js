@@ -1187,6 +1187,7 @@ try {
 } catch (err) { }
 module.exports.TcpPort = require("./ports/tcpport");
 module.exports.TcpRTUBufferedPort = require("./ports/tcprtubufferedport");
+module.exports.RTUOverTCPBufferedPort = require("./ports/rtuovertcpbufferedport");
 module.exports.TelnetPort = require("./ports/telnetport");
 module.exports.C701Port = require("./ports/c701port");
 
